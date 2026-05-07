@@ -48,7 +48,10 @@ class PlaceOrderCommandHandler : ICommandHandler<PlaceOrderCommand>
 class GetOrderStatusQueryHandler : IQueryHandler<GetOrderStatusQuery, string>
 {
     public Task<string> Handle(GetOrderStatusQuery query, CancellationToken cancellationToken)
-        => Task.FromResult($"Order '{query.OrderId}' is confirmed.");
+    {
+        Console.WriteLine($"[Handler] Fetching status for '{query.OrderId}'.");
+        return Task.FromResult($"Order '{query.OrderId}' is confirmed.");
+    }
 }
 
 // =============================================================================

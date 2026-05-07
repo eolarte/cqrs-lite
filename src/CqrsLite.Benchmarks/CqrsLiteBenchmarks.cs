@@ -19,6 +19,7 @@ namespace CqrsLite.Benchmarks;
 [MemoryDiagnoser]
 public class CqrsLiteBenchmarks
 {
+    private ServiceProvider? _serviceProvider;
     private IDispatcher _dispatcher = null!;
 
     private readonly BenchmarkCommand _command = new();
@@ -36,7 +37,8 @@ public class CqrsLiteBenchmarks
             builder.AddQueryHandler<BenchmarkQuery, string, BenchmarkQueryHandler>();
         });
 
-        _dispatcher = services.BuildServiceProvider().GetRequiredService<IDispatcher>();
+        _serviceProvider = services.BuildServiceProvider();
+        _dispatcher = _serviceProvider.GetRequiredService<IDispatcher>();
 
         // Warm the delegate cache before measurement begins so all three
         // dispatch benchmarks measure only the steady-state path.
@@ -44,6 +46,9 @@ public class CqrsLiteBenchmarks
         await _dispatcher.Send(_resultCommand);
         await _dispatcher.Query(_query);
     }
+
+    [GlobalCleanup]
+    public void GlobalCleanup() => _serviceProvider?.Dispose();
 
     [Benchmark(Description = "Warm ICommand dispatch")]
     public Task WarmVoidCommandDispatch() => _dispatcher.Send(_command);
