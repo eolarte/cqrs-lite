@@ -36,3 +36,6 @@ Thumbs.db
 .opencode/
 docs/specs/*
 docs/ideas/*
+
+# Benchmark raw artifacts (committed only via benchmark-baseline.md)
+BenchmarkDotNet.Artifacts/
