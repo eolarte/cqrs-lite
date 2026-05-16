@@ -13,6 +13,7 @@
 - For focused work, run `dotnet test test/CqrsLite.Tests/CqrsLite.Tests.csproj --filter "<pattern>"`.
 - Dependency injection registration starts with `services.AddCqrsLite(...)`.
 - Handlers can be registered explicitly with `AddCommandHandler(...)` / `AddQueryHandler(...)` or discovered with `ScanHandlers(...)`.
+- Shared agent assets are canonical under `.agents`. Use `python3 .agents/skills/sync-agent-config/scripts/sync_agent_configs.py --check|--sync|--validate` instead of hand-editing mirrored tool folders.
 
 ## Testing instructions
 - There is no repository CI workflow under `.github/workflows` yet, so use the solution-level `dotnet` commands locally.

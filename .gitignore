@@ -34,6 +34,12 @@ Thumbs.db
 
 # Local tool state
 .opencode/
+.agents/*
+.github/agents/*
+.github/skills/*
+.claude/*
+.factory/*
+.cursor/*
 docs/specs/*
 docs/ideas/*
 

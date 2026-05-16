@@ -1,0 +1,23 @@
+{
+  "servers": {
+    "context7": {
+      "headers": {
+        "CONTEXT7_API_KEY": "CONTEXT7_API_KEY"
+      },
+      "tools": [
+        "*"
+      ],
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "microsoftdocs/mcp": {
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp"
+    }
+  },
+  "x-sync-agent-config": {
+    "regenerate": "python3 .agents/skills/sync-agent-config/scripts/sync_agent_configs.py --sync",
+    "source": ".agents/mcp.json",
+    "target": "claude"
+  }
+}
