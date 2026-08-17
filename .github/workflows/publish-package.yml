@@ -1,0 +1,44 @@
+name: Publish CqrsLite package
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        run: dotnet restore src/CqrsLite/CqrsLite.csproj
+
+      - name: Pack
+        env:
+          PACKAGE_VERSION: ${{ github.ref_name }}
+        run: |
+          PACKAGE_VERSION="${PACKAGE_VERSION#v}"
+          dotnet pack src/CqrsLite/CqrsLite.csproj \
+            --configuration Release \
+            --no-restore \
+            --output ./artifacts \
+            /p:PackageVersion="$PACKAGE_VERSION"
+
+      - name: Publish to GitHub Packages
+        run: >
+          dotnet nuget push "./artifacts/*.nupkg"
+          --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+          --api-key "${{ secrets.GITHUB_TOKEN }}"
+          --skip-duplicate

@@ -3,7 +3,19 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>CqrsLite</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>eolarte</Authors>
+    <Description>A lightweight CQRS dispatcher and handler registration library for .NET.</Description>
+    <PackageTags>cqrs;mediator;dispatcher;dependency-injection</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/eolarte/cqrs-lite</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
