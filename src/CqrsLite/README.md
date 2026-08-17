@@ -1,4 +1,4 @@
-# CqrsLite
+# Eolarte.CqrsLite
 
 `CqrsLite` is a lightweight CQRS dispatcher for .NET applications.
 

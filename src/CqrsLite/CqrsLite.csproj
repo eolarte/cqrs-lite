@@ -3,7 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>CqrsLite</PackageId>
+    <PackageId>Eolarte.CqrsLite</PackageId>
     <Version>0.1.0</Version>
     <Authors>eolarte</Authors>
     <Description>A lightweight CQRS dispatcher and handler registration library for .NET.</Description>

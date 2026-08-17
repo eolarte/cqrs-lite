@@ -2,7 +2,7 @@
 
 A lightweight CQRS implementation for C#.
 
-The `CqrsLite` package is currently published privately to GitHub Packages.
+The `Eolarte.CqrsLite` package is currently published privately to GitHub Packages.
 The package source is:
 
 ```text

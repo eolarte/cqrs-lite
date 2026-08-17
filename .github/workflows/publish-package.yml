@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - '*.*.*'
+  workflow_dispatch:
+    inputs:
+      package_version:
+        description: Package version to publish
+        required: true
+        default: 0.1.0
 
 permissions:
   contents: read
@@ -27,7 +33,7 @@ jobs:
 
       - name: Pack
         env:
-          PACKAGE_VERSION: ${{ github.ref_name }}
+          PACKAGE_VERSION: ${{ inputs.package_version || github.ref_name }}
         run: |
           PACKAGE_VERSION="${PACKAGE_VERSION#v}"
           dotnet pack src/CqrsLite/CqrsLite.csproj \
